@@ -1,0 +1,26 @@
+{
+  "name": "personal-email-form",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Swolebrain/personal-email-form.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Swolebrain/personal-email-form/issues"
+  },
+  "homepage": "https://github.com/Swolebrain/personal-email-form#readme",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
+    "nodemailer": "^2.7.2",
+    "nodemailer-ses-transport": "^1.5.0"
+  }
+}
