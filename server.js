@@ -26,7 +26,7 @@ app.use(function(req,res,next){
 
 app.get('/', function(req, res){
   var mailOptions = {
-    from: 'Thecodingteacher@gmail.com',
+    from: 'thecodingteacher@gmail.com',
     to: 'thecodingteacher@gmail.com',
     subject: 'Test with AWS SES',
     html: `
@@ -37,9 +37,10 @@ app.get('/', function(req, res){
       console.log(err);
     }
     res.sendStatus(200);
+    console.log("email sent to "+mailOptions.to);
   });
 });
 
 app.listen(8001, function(){
-  console.log("listening on port 81");
+  console.log("listening on port 8001");
 });
