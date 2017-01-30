@@ -1,5 +1,5 @@
 var express = require('express');
-var app = express;
+var app = express();
 var nodemailer = require('nodemailer');
 var ses = require('nodemailer-ses-transport');
 var awsCreds = require('./.config.json');
@@ -40,4 +40,6 @@ app.get('/', function(req, res){
   });
 });
 
-app.listen(81);
+app.listen(81, function(){
+  console.log("listening on port 81");
+});
