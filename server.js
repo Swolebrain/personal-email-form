@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 var ses = require('nodemailer-ses-transport');
 var awsCreds = require('./.config.json');
@@ -24,13 +25,18 @@ app.use(function(req,res,next){
   next();
 });
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
 app.get('/', function(req, res){
+  if (!req.body || !req.body.subject || !req.body.message || !req.body.email){
+    return res.sendStatus(400);
+  }
   var mailOptions = {
     from: 'thecodingteacher@gmail.com',
     to: 'thecodingteacher@gmail.com',
-    subject: 'Test with AWS SES',
-    html: `
-    <h1>Yo whats up </h1>`
+    subject: req.body.email+": "+req.body.subject,
+    html: req.body.message
   };
   transporter.sendMail(mailOptions, function(err){
     if (err){
