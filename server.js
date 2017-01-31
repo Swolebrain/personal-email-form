@@ -29,14 +29,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.get('/', function(req, res){
-  if (!req.body || !req.body.subject || !req.body.message || !req.body.email){
+  if (!req.body || !req.body.name || !req.body.message || !req.body.email ){
     return res.sendStatus(400);
   }
   var mailOptions = {
     from: 'thecodingteacher@gmail.com',
     to: 'thecodingteacher@gmail.com',
-    subject: req.body.email+": "+req.body.subject,
-    html: req.body.message
+    subject: 'Email from '+req.body.name,
+    html: `
+    <h3>Reply to address: ${req.body.email}</h3>
+    ${req.body.message}`
   };
   transporter.sendMail(mailOptions, function(err){
     if (err){
