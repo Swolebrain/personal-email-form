@@ -28,7 +28,7 @@ app.use(function(req,res,next){
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.get('/', function(req, res){
+app.post('/', function(req, res){
   if (!req.body || !req.body.name || !req.body.message || !req.body.email ){
     return res.sendStatus(400);
   }
